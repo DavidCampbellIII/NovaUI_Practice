@@ -1135,7 +1135,7 @@ MonoBehaviour:
           Raw: 0
           Type: 1
       Rotation: 0
-      FillAngle: 180
+      FillAngle: 360
       Enabled: 1
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4750,7 +4750,7 @@ MonoBehaviour:
           Raw: 0
           Type: 1
       Rotation: 0
-      FillAngle: -180
+      FillAngle: 0
       Enabled: 1
     Gradient:
       Color: {r: 1, g: 1, b: 1, a: 1}
