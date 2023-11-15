@@ -14,19 +14,43 @@ public class SettingsMenu : MonoBehaviour
     public FloatSetting floatSetting = new FloatSetting();
     public ItemView sliderItemView;
 
+    public MultiOptionSetting multiOptionSetting = new MultiOptionSetting();
+    public ItemView dropdownItemView;
+
     private void Start()
     {
+        //visuals
         root.AddGestureHandler<Gesture.OnHover, ToggleVisuals>(ToggleVisuals.HandleHover);
         root.AddGestureHandler<Gesture.OnUnhover, ToggleVisuals>(ToggleVisuals.HandleUnhover);
         root.AddGestureHandler<Gesture.OnPress, ToggleVisuals>(ToggleVisuals.HandlePress);
         root.AddGestureHandler<Gesture.OnRelease, ToggleVisuals>(ToggleVisuals.HandleRelease);
 
+        root.AddGestureHandler<Gesture.OnHover, DropdownVisuals>(DropdownVisuals.HandleHover);
+        root.AddGestureHandler<Gesture.OnUnhover, DropdownVisuals>(DropdownVisuals.HandleUnhover);
+        root.AddGestureHandler<Gesture.OnPress, DropdownVisuals>(DropdownVisuals.HandlePress);
+        root.AddGestureHandler<Gesture.OnRelease, DropdownVisuals>(DropdownVisuals.HandleRelease);
+
+        //state changing
         root.AddGestureHandler<Gesture.OnClick, ToggleVisuals>(HandleToggleClicked);
         root.AddGestureHandler<Gesture.OnDrag, SliderVisuals>(HandleSliderDragged);
+        root.AddGestureHandler<Gesture.OnClick, DropdownVisuals>(HandleDropdownClicked);
 
         //temporary
         BindToggle(boolSetting, toggleItemView.Visuals as ToggleVisuals);
         BindSlider(floatSetting, sliderItemView.Visuals as SliderVisuals);
+        BindDropdown(multiOptionSetting, dropdownItemView.Visuals as DropdownVisuals);
+    }
+
+    private void HandleDropdownClicked(Gesture.OnClick evt, DropdownVisuals target)
+    {
+        if(target.IsExpanded)
+        {
+            target.Collapse();
+        }
+        else
+        {
+            target.Expand(multiOptionSetting);
+        }
     }
 
     private void HandleSliderDragged(Gesture.OnDrag evt, SliderVisuals target)
@@ -48,6 +72,13 @@ public class SettingsMenu : MonoBehaviour
     {
         boolSetting.state = !boolSetting.state;
         target.IsChecked = boolSetting.state;
+    }
+
+    private void BindDropdown(MultiOptionSetting multiOptionSetting, DropdownVisuals visuals)
+    {
+        visuals.label.Text = multiOptionSetting.name;
+        visuals.selectedLabel.Text = multiOptionSetting.CurrentSelection;
+        visuals.Collapse();
     }
 
     private void BindSlider(FloatSetting floatSetting, SliderVisuals visuals)

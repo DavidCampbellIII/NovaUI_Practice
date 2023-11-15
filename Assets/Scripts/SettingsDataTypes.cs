@@ -32,3 +32,14 @@ public class FloatSetting : Setting
 
     public string DisplayValue => string.Format(valueFormat, Value);
 }
+
+[System.Serializable]
+public class MultiOptionSetting : Setting
+{
+    private const string NOTHING_SELECTED = "None";
+
+    public string[] options;
+    public int selectedIndex;
+
+    public string CurrentSelection => selectedIndex >= 0 ? options[selectedIndex] : NOTHING_SELECTED;
+}
