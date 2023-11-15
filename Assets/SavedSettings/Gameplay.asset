@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53c14af159c3c943950b33a73b03f33, type: 3}
+  m_Name: Gameplay
+  m_EditorClassIdentifier: 
+  category: Gameplay
+  settings:
+  - rid: 7417710418636046365
+  - rid: 7417710418636046366
+  - rid: 7417710418636046367
+  - rid: 7417710418636046368
+  - rid: 7417710418636046369
+  - rid: 7417710418636046370
+  references:
+    version: 2
+    RefIds:
+    - rid: 7417710418636046365
+      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+      data:
+        name: Text Chat
+        options:
+        - Allow All
+        - Friends Only
+        - Disabled
+        selectedIndex: 0
+    - rid: 7417710418636046366
+      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+      data:
+        name: Split Screen Layout
+        options:
+        - Vertical
+        - Horizontal
+        selectedIndex: 0
+    - rid: 7417710418636046367
+      type: {class: BoolSetting, ns: , asm: Assembly-CSharp}
+      data:
+        name: Cross Platform Play
+        state: 1
+    - rid: 7417710418636046368
+      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+      data:
+        name: Client Send Rate
+        options:
+        - Low
+        - Medium
+        - High
+        selectedIndex: 2
+    - rid: 7417710418636046369
+      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+      data:
+        name: Server Send Rate
+        options:
+        - Low
+        - Medium
+        - High
+        selectedIndex: 2
+    - rid: 7417710418636046370
+      type: {class: BoolSetting, ns: , asm: Assembly-CSharp}
+      data:
+        name: Show Extra Mode Ranks
+        state: 1
